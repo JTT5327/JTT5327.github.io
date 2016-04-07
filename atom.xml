@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://JTT5327.github.io/"/>
-  <updated>2016-04-07T03:22:56.335Z</updated>
+  <updated>2016-04-07T07:55:21.241Z</updated>
   <id>http://JTT5327.github.io/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javascript</title>
+    <link href="http://JTT5327.github.io/2016/04/07/javascript/"/>
+    <id>http://JTT5327.github.io/2016/04/07/javascript/</id>
+    <published>2016-04-07T07:51:06.000Z</published>
+    <updated>2016-04-07T07:55:21.241Z</updated>
+    
+    <content type="html">&lt;p&gt;##这是测试内容&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##这是测试内容&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="test" scheme="http://JTT5327.github.io/categories/test/"/>
+    
+    
+      <category term="测试" scheme="http://JTT5327.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -39,6 +63,34 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>MyFirstPage</title>
+    <link href="http://JTT5327.github.io/2015/09/02/MyFirstPage/"/>
+    <id>http://JTT5327.github.io/2015/09/02/MyFirstPage/</id>
+    <published>2015-09-02T15:14:11.000Z</published>
+    <updated>2016-04-07T07:58:32.608Z</updated>
+    
+    <content type="html">&lt;p&gt;今天差不多花了一天的时间用hexo在github上面搭建自己的个人博客，初次搭建的我，对于其间的各种配置真的觉得太繁琐了，虽然走了不少弯路，但也收获了不会少的东西，对git以及github有了一定的了解（很早以前就想做的事情，非要拖到今天才来做，真是不应该呀）。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天差不多花了一天的时间用hexo在github上面搭建自己的个人博客，初次搭建的我，对于其间的各种配置真的觉得太繁琐了，虽然走了不少弯路，但也收获了不会少的东西，对git以及github有了一定的了解（很早以前就想做的事情，非要拖到今天才来做，真是不应该呀）。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="感想" scheme="http://JTT5327.github.io/categories/%E6%84%9F%E6%83%B3/"/>
+    
+    
+      <category term="开始" scheme="http://JTT5327.github.io/tags/%E5%BC%80%E5%A7%8B/"/>
+    
+      <category term="我" scheme="http://JTT5327.github.io/tags/%E6%88%91/"/>
+    
+      <category term="日记" scheme="http://JTT5327.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
