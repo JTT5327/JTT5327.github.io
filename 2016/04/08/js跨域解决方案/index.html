@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js跨域解决方案 | MrJTT&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天来说一说js跨域那五毛钱的事。首先，在了解跨域之前，我们来知道什么是同源策略？概念：同源策略是客户端脚本（尤其是Javascript）的重要的安全度量标准。它最早出自Netscape Navigator2.0，其目的是防止某个文档或脚本从多个不同源装载。这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。指一段脚本只能读取来自同一来源的窗口和文档的属性。那么跨域的概念的就显而易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js跨域解决方案">
+<meta property="og:url" content="http://JTT5327.github.io/2016/04/08/js跨域解决方案/index.html">
+<meta property="og:site_name" content="MrJTT's bolg">
+<meta property="og:description" content="今天来说一说js跨域那五毛钱的事。首先，在了解跨域之前，我们来知道什么是同源策略？概念：同源策略是客户端脚本（尤其是Javascript）的重要的安全度量标准。它最早出自Netscape Navigator2.0，其目的是防止某个文档或脚本从多个不同源装载。这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。指一段脚本只能读取来自同一来源的窗口和文档的属性。那么跨域的概念的就显而易">
+<meta property="og:updated_time" content="2016-04-08T08:50:27.753Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js跨域解决方案">
+<meta name="twitter:description" content="今天来说一说js跨域那五毛钱的事。首先，在了解跨域之前，我们来知道什么是同源策略？概念：同源策略是客户端脚本（尤其是Javascript）的重要的安全度量标准。它最早出自Netscape Navigator2.0，其目的是防止某个文档或脚本从多个不同源装载。这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。指一段脚本只能读取来自同一来源的窗口和文档的属性。那么跨域的概念的就显而易">
+  
+    <link rel="alternative" href="/atom.xml" title="MrJTT&#39;s bolg" type="application/atom+xml">
+  
+  
+    <!-- <link rel="icon" href="/favicon.ico"> -->
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!--你的百度统计代码-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?846a08084ebb0b83bad0fec2a603e501";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">MrJTT&#39;s bolg</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">新的开始 新的征程</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://JTT5327.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js跨域解决方案" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/08/js跨域解决方案/" class="article-date">
+  <time datetime="2016-04-08T06:27:26.000Z" itemprop="datePublished">2016-04-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js跨域解决方案
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天来说一说js跨域那五毛钱的事。首先，在了解跨域之前，我们来知道什么是<a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="external">同源策略</a>？<br><strong>概念</strong>：同源策略是客户端脚本（尤其是Javascript）的重要的安全度量标准。它最早出自Netscape Navigator2.0，其目的是防止某个文档或脚本从多个不同源装载。这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。指一段脚本只能读取来自同一来源的窗口和文档的属性。<br>那么<strong>跨域</strong>的概念的就显而易见：只要协议、域名、端口有任何一个不同，都被当作是不同的域。  </p>
+<h2 id="JSONP跨域-get方式请求"><a href="#JSONP跨域-get方式请求" class="headerlink" title="JSONP跨域(get方式请求)"></a>JSONP跨域(get方式请求)</h2><p>通过引入不同域url的js脚本文件（script标签的src属性），并且在请求url后面传递一个callback参数指定回调函数的函数名，且服务端将要返回的json数据参数形式传入客户端指定的回调函数之中，js文件执行的时候，负责调用回调函数。例如：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">dosomething</span><span class="params">(jsondata)</span></span>&#123;</span><br><span class="line">    <span class="comment">//获得后台返回会json数据</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.example.com/data.php?callback=dosomething"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><em>优点</em>：<br>　　- 不受同源策略限制，可以进行跨域访问资源；</p>
+<pre><code>- 兼容性比ajax要好，因为不用去创建xhr对象或者activexobject对象；
+</code></pre><p><em>缺点</em>：<br>　　- 只支持get请求，而不能支持post等其他方式的http请求；<br>　　- 它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行js交互调用的问题；</p>
+<h2 id="ajax跨域资源共享：CORS（可以实现post方式请求）"><a href="#ajax跨域资源共享：CORS（可以实现post方式请求）" class="headerlink" title="ajax跨域资源共享：ＣＯＲＳ（可以实现post方式请求）"></a>ajax跨域资源共享：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">ＣＯＲＳ</a>（可以实现post方式请求）</h2><p>其基本的原理思想就是：利用自定义的HTTP头部添加一个<code>Access-Control-Allow-Origin</code>属性字段，来让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。  </p>
+<p>现在假设站点 <code>http://foo.example</code> 的网页应用想要访问 <code>http://bar.other</code> 的资源。以下的 JavaScript 代码应该会在 foo.example 上执行：<br><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> invocation = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="built_in">var</span> <span class="built_in">url</span> = <span class="string">'http://bar.other/resources/public-data/'</span>;</span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callOtherDomain</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(invocation) &#123;    </span><br><span class="line">    invocation.open(<span class="string">'GET'</span>, <span class="built_in">url</span>, <span class="literal">true</span>);</span><br><span class="line">    invocation.onreadystatechange = handler;</span><br><span class="line">    invocation.send(); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在浏览器向服务器发送跨站的请求，以下是http请求报文以及响应请求<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/resources/public-data/</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: bar.other</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: en-us,en;q=0.5</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip,deflate</span><br><span class="line"><span class="attribute">Accept-Charset</span>: ISO-8859-1,utf-8;q=0.7,*;q=0.7</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Referer</span>: http://foo.example/examples/access-control/simpleXSInvocation.html</span><br><span class="line"><span class="attribute">Origin</span>: http://foo.example</span><br><span class="line"></span><br><span class="line"><span class="http"></span><br><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Date</span>: Mon, 01 Dec 2008 00:23:53 GMT</span><br><span class="line"><span class="attribute">Server</span>: Apache/2.0.61 </span><br><span class="line"><span class="attribute">Access-Control-Allow-Origin</span>: *</span><br><span class="line"><span class="attribute">Keep-Alive</span>: timeout=2, max=100</span><br><span class="line"><span class="attribute">Connection</span>: Keep-Alive</span><br><span class="line"><span class="attribute">Transfer-Encoding</span>: chunked</span><br><span class="line"><span class="attribute">Content-Type</span>: application/xml</span><br><span class="line"></span><br><span class="line"><span class="crmsh">[<span class="keyword">XML</span> <span class="title">Data</span>]</span></span></span><br></pre></td></tr></table></figure></p>
+<p>服务端返回请求头里面Access-Control-Allow-Origin：*表示服务器接受来自任何其他站点的跨站请求，这样<code>http://example.com</code>站点下的js脚本文件就能够接受到来自<code>http://bar.other</code>站点服务器返回的json数据，从而实现了一个简单的跨站请求过程。</p>
+<h3 id="参考学习资源："><a href="#参考学习资源：" class="headerlink" title="参考学习资源："></a>参考学习资源：</h3><p><a href="https://segmentfault.com/a/1190000000718840" target="_blank" rel="external">https://segmentfault.com/a/1190000000718840</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://JTT5327.github.io/2016/04/08/js跨域解决方案/" data-id="cimre8dc50005v4d80agnhzuf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/08/微店面试/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">微店面试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+   <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-js跨域解决方案" data-title="js跨域解决方案" data-url="http://JTT5327.github.io/2016/04/08/js跨域解决方案/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'JTT5327'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/感想/">感想</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/微店/" style="font-size: 10px;">微店</a> <a href="/tags/我/" style="font-size: 10px;">我</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/04/08/js跨域解决方案/">js跨域解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/08/微店面试/">微店面试</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/07/javascript/">javascript</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/02/MyFirstPage/">MyFirstPage</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul class="entry">
+      <li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+      <li><a href="http://xhay1122.com/" title="xhay's Blog">熊孩子</a></li>
+      <li><a href="http://blog.zchub.cn/" title="wangxizhu's Blog">川川</a></li>
+      <li><a href="http://ql91.github.io/" title="Lu's Blog">qinglu</a></li>
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 JTT<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

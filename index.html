@@ -19,7 +19,7 @@
   
   
     <!-- <link rel="icon" href="/favicon.ico"> -->
-    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
   
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css">
@@ -76,6 +76,101 @@ var _hmt = _hmt || [];
       <div class="outer">
         <section id="main">
   
+    <article id="post-js跨域解决方案" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/08/js跨域解决方案/" class="article-date">
+  <time datetime="2016-04-08T06:27:26.000Z" itemprop="datePublished">2016-04-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/08/js跨域解决方案/">js跨域解决方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天来说一说js跨域那五毛钱的事。首先，在了解跨域之前，我们来知道什么是<a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy">同源策略</a>？<br><strong>概念</strong>：同源策略是客户端脚本（尤其是Javascript）的重要的安全度量标准。它最早出自Netscape Navigator2.0，其目的是防止某个文档或脚本从多个不同源装载。这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。指一段脚本只能读取来自同一来源的窗口和文档的属性。<br>那么<strong>跨域</strong>的概念的就显而易见：只要协议、域名、端口有任何一个不同，都被当作是不同的域。  </p>
+<h2 id="JSONP跨域-get方式请求"><a href="#JSONP跨域-get方式请求" class="headerlink" title="JSONP跨域(get方式请求)"></a>JSONP跨域(get方式请求)</h2><p>通过引入不同域url的js脚本文件（script标签的src属性），并且在请求url后面传递一个callback参数指定回调函数的函数名，且服务端将要返回的json数据参数形式传入客户端指定的回调函数之中，js文件执行的时候，负责调用回调函数。例如：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">dosomething</span><span class="params">(jsondata)</span></span>&#123;</span><br><span class="line">    <span class="comment">//获得后台返回会json数据</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.example.com/data.php?callback=dosomething"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/08/js跨域解决方案/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://JTT5327.github.io/2016/04/08/js跨域解决方案/" data-id="cimre8dc50005v4d80agnhzuf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-微店面试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/08/微店面试/" class="article-date">
+  <time datetime="2016-04-08T06:20:52.000Z" itemprop="datePublished">2016-04-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/面试/">面试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/08/微店面试/">微店面试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>  说起跟微店的爱恨情仇，真是渊源颇深，一路走来，真不知道踩了多少坑。（心塞。。。）从去年9月秋招开始，再到今年3月春招，我参与微店的面试总共4个回合。一回电话面试（2面），二回秋招笔试（直接被刷），三回转移阵地再战秋招（一轮笔试+一轮面试），四回春招（5面）。<br>  前面三回都失败了，好在第四回成功拿到offer。那就说说第四回之春招吧。尽管前面一次又一次的机会都被我浪费掉了，但可能我就像打不死的小强，看见微店春招招人，本来也没报以多大的希望，但有身边的她一直为我加油打气，于是我又厚着脸皮给微店投递了一份简历。。。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/08/微店面试/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://JTT5327.github.io/2016/04/08/微店面试/" data-id="cimre8dc50007v4d8ohgg0ysv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微店/">微店</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/07/javascript/" class="article-date">
@@ -102,12 +197,11 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##这是测试内容</p>
-
+        <h2 id="这是测试内容"><a href="#这是测试内容" class="headerlink" title="这是测试内容"></a>这是测试内容</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://JTT5327.github.io/2016/04/07/javascript/" data-id="cimq0fkkz0001h4d8t5icnece" class="article-share-link">Share</a>
+      <a data-url="http://JTT5327.github.io/2016/04/07/javascript/" data-id="cimre8dc50004v4d87egy09l4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试/">测试</a></li></ul>
@@ -154,7 +248,7 @@ var _hmt = _hmt || [];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://JTT5327.github.io/2016/04/07/hello-world/" data-id="cimq0fkkz0004h4d841r9zpic" class="article-share-link">Share</a>
+      <a data-url="http://JTT5327.github.io/2016/04/07/hello-world/" data-id="cimre8dc50001v4d84n0rqhs7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +289,7 @@ var _hmt = _hmt || [];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://JTT5327.github.io/2015/09/02/MyFirstPage/" data-id="cimq0fkkj0000h4d8rtd4ofsy" class="article-share-link">Share</a>
+      <a data-url="http://JTT5327.github.io/2015/09/02/MyFirstPage/" data-id="cimre8dbq0000v4d88dd78udx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开始/">开始</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/我/">我</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日记/">日记</a></li></ul>
@@ -216,7 +310,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/感想/">感想</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/感想/">感想</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -225,7 +319,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/我/" style="font-size: 10px;">我</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/微店/" style="font-size: 10px;">微店</a> <a href="/tags/我/" style="font-size: 10px;">我</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
     </div>
   </div>
 
@@ -234,7 +328,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -244,6 +338,14 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/08/js跨域解决方案/">js跨域解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/08/微店面试/">微店面试</a>
+          </li>
         
           <li>
             <a href="/2016/04/07/javascript/">javascript</a>

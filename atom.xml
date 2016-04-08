@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://JTT5327.github.io/"/>
-  <updated>2016-04-07T07:55:21.241Z</updated>
+  <updated>2016-04-08T08:50:27.753Z</updated>
   <id>http://JTT5327.github.io/</id>
   
   <author>
@@ -16,19 +16,169 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>javascript</title>
-    <link href="http://JTT5327.github.io/2016/04/07/javascript/"/>
-    <id>http://JTT5327.github.io/2016/04/07/javascript/</id>
-    <published>2016-04-07T07:51:06.000Z</published>
-    <updated>2016-04-07T07:55:21.241Z</updated>
+    <title>js跨域解决方案</title>
+    <link href="http://JTT5327.github.io/2016/04/08/js%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://JTT5327.github.io/2016/04/08/js跨域解决方案/</id>
+    <published>2016-04-08T06:27:26.000Z</published>
+    <updated>2016-04-08T08:50:27.753Z</updated>
     
-    <content type="html">&lt;p&gt;##这是测试内容&lt;/p&gt;
+    <content type="html">&lt;p&gt;今天来说一说js跨域那五毛钱的事。首先，在了解跨域之前，我们来知道什么是&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;同源策略&lt;/a&gt;？&lt;br&gt;&lt;strong&gt;概念&lt;/strong&gt;：同源策略是客户端脚本（尤其是Javascript）的重要的安全度量标准。它最早出自Netscape Navigator2.0，其目的是防止某个文档或脚本从多个不同源装载。这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。指一段脚本只能读取来自同一来源的窗口和文档的属性。&lt;br&gt;那么&lt;strong&gt;跨域&lt;/strong&gt;的概念的就显而易见：只要协议、域名、端口有任何一个不同，都被当作是不同的域。  &lt;/p&gt;
+&lt;h2 id=&quot;JSONP跨域-get方式请求&quot;&gt;&lt;a href=&quot;#JSONP跨域-get方式请求&quot; class=&quot;headerlink&quot; title=&quot;JSONP跨域(get方式请求)&quot;&gt;&lt;/a&gt;JSONP跨域(get方式请求)&lt;/h2&gt;&lt;p&gt;通过引入不同域url的js脚本文件（script标签的src属性），并且在请求url后面传递一个callback参数指定回调函数的函数名，且服务端将要返回的json数据参数形式传入客户端指定的回调函数之中，js文件执行的时候，负责调用回调函数。例如：&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;actionscript&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;dosomething&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(jsondata)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//获得后台返回会json数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://www.example.com/data.php?callback=dosomething&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;em&gt;优点&lt;/em&gt;：&lt;br&gt;　　- 不受同源策略限制，可以进行跨域访问资源；&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- 兼容性比ajax要好，因为不用去创建xhr对象或者activexobject对象；
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;缺点&lt;/em&gt;：&lt;br&gt;　　- 只支持get请求，而不能支持post等其他方式的http请求；&lt;br&gt;　　- 它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行js交互调用的问题；&lt;/p&gt;
+&lt;h2 id=&quot;ajax跨域资源共享：CORS（可以实现post方式请求）&quot;&gt;&lt;a href=&quot;#ajax跨域资源共享：CORS（可以实现post方式请求）&quot; class=&quot;headerlink&quot; title=&quot;ajax跨域资源共享：ＣＯＲＳ（可以实现post方式请求）&quot;&gt;&lt;/a&gt;ajax跨域资源共享：&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ＣＯＲＳ&lt;/a&gt;（可以实现post方式请求）&lt;/h2&gt;&lt;p&gt;其基本的原理思想就是：利用自定义的HTTP头部添加一个&lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt;属性字段，来让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。  &lt;/p&gt;
+&lt;p&gt;现在假设站点 &lt;code&gt;http://foo.example&lt;/code&gt; 的网页应用想要访问 &lt;code&gt;http://bar.other&lt;/code&gt; 的资源。以下的 JavaScript 代码应该会在 foo.example 上执行：&lt;br&gt;&lt;figure class=&quot;highlight qml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;var&lt;/span&gt; invocation = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; XMLHttpRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&#39;http://bar.other/resources/public-data/&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;callOtherDomain&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(invocation) &amp;#123;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    invocation.open(&lt;span class=&quot;string&quot;&gt;&#39;GET&#39;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;url&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    invocation.onreadystatechange = handler;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    invocation.send(); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;现在浏览器向服务器发送跨站的请求，以下是http请求报文以及响应请求&lt;br&gt;&lt;figure class=&quot;highlight http&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;/resources/public-data/&lt;/span&gt; HTTP/1.1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Host&lt;/span&gt;: bar.other&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;User-Agent&lt;/span&gt;: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Accept&lt;/span&gt;: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Accept-Language&lt;/span&gt;: en-us,en;q=0.5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Accept-Encoding&lt;/span&gt;: gzip,deflate&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Accept-Charset&lt;/span&gt;: ISO-8859-1,utf-8;q=0.7,*;q=0.7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Connection&lt;/span&gt;: keep-alive&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Referer&lt;/span&gt;: http://foo.example/examples/access-control/simpleXSInvocation.html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Origin&lt;/span&gt;: http://foo.example&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;http&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;HTTP/1.1 &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt; OK&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Date&lt;/span&gt;: Mon, 01 Dec 2008 00:23:53 GMT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Server&lt;/span&gt;: Apache/2.0.61 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Access-Control-Allow-Origin&lt;/span&gt;: *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Keep-Alive&lt;/span&gt;: timeout=2, max=100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Connection&lt;/span&gt;: Keep-Alive&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Transfer-Encoding&lt;/span&gt;: chunked&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;Content-Type&lt;/span&gt;: application/xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;crmsh&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;XML&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Data&lt;/span&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;服务端返回请求头里面Access-Control-Allow-Origin：*表示服务器接受来自任何其他站点的跨站请求，这样&lt;code&gt;http://example.com&lt;/code&gt;站点下的js脚本文件就能够接受到来自&lt;code&gt;http://bar.other&lt;/code&gt;站点服务器返回的json数据，从而实现了一个简单的跨站请求过程。&lt;/p&gt;
+&lt;h3 id=&quot;参考学习资源：&quot;&gt;&lt;a href=&quot;#参考学习资源：&quot; class=&quot;headerlink&quot; title=&quot;参考学习资源：&quot;&gt;&lt;/a&gt;参考学习资源：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000000718840&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://segmentfault.com/a/1190000000718840&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;##这是测试内容&lt;/p&gt;
-
+      &lt;p&gt;今天来说一说js跨域那五毛钱的事。首先，在了解跨域之前，我们来知道什么是&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy&quot;&gt;同源策略&lt;/a&gt;？&lt;br&gt;&lt;strong&gt;概念&lt;/strong&gt;：同源策略是客户端脚本（尤其是Javascript）的重要的安全度量标准。它最早出自Netscape Navigator2.0，其目的是防止某个文档或脚本从多个不同源装载。这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。指一段脚本只能读取来自同一来源的窗口和文档的属性。&lt;br&gt;那么&lt;strong&gt;跨域&lt;/strong&gt;的概念的就显而易见：只要协议、域名、端口有任何一个不同，都被当作是不同的域。  &lt;/p&gt;
+&lt;h2 id=&quot;JSONP跨域-get方式请求&quot;&gt;&lt;a href=&quot;#JSONP跨域-get方式请求&quot; class=&quot;headerlink&quot; title=&quot;JSONP跨域(get方式请求)&quot;&gt;&lt;/a&gt;JSONP跨域(get方式请求)&lt;/h2&gt;&lt;p&gt;通过引入不同域url的js脚本文件（script标签的src属性），并且在请求url后面传递一个callback参数指定回调函数的函数名，且服务端将要返回的json数据参数形式传入客户端指定的回调函数之中，js文件执行的时候，负责调用回调函数。例如：&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;actionscript&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;dosomething&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(jsondata)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//获得后台返回会json数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://www.example.com/data.php?callback=dosomething&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://JTT5327.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://JTT5327.github.io/tags/javascript/"/>
+    
+      <category term="跨域" scheme="http://JTT5327.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微店面试</title>
+    <link href="http://JTT5327.github.io/2016/04/08/%E5%BE%AE%E5%BA%97%E9%9D%A2%E8%AF%95/"/>
+    <id>http://JTT5327.github.io/2016/04/08/微店面试/</id>
+    <published>2016-04-08T06:20:52.000Z</published>
+    <updated>2016-04-08T07:59:31.060Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;  说起跟微店的爱恨情仇，真是渊源颇深，一路走来，真不知道踩了多少坑。（心塞。。。）从去年9月秋招开始，再到今年3月春招，我参与微店的面试总共4个回合。一回电话面试（2面），二回秋招笔试（直接被刷），三回转移阵地再战秋招（一轮笔试+一轮面试），四回春招（5面）。&lt;br&gt;  前面三回都失败了，好在第四回成功拿到offer。那就说说第四回之春招吧。尽管前面一次又一次的机会都被我浪费掉了，但可能我就像打不死的小强，看见微店春招招人，本来也没报以多大的希望，但有身边的她一直为我加油打气，于是我又厚着脸皮给微店投递了一份简历。。。&lt;br&gt;  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;面试晋级之路&quot;&gt;&lt;a href=&quot;#面试晋级之路&quot; class=&quot;headerlink&quot; title=&quot;面试晋级之路&quot;&gt;&lt;/a&gt;面试晋级之路&lt;/h1&gt;&lt;p&gt;这次微店春招，我总共经历了5面（对，你没有看错，细思极恐），4轮技术面试+一轮hr面。下面就来说说面试的过程以及问过的一些问题吧。&lt;/p&gt;
+&lt;h2 id=&quot;一面（电话面试）&quot;&gt;&lt;a href=&quot;#一面（电话面试）&quot; class=&quot;headerlink&quot; title=&quot;一面（电话面试）&quot;&gt;&lt;/a&gt;一面（电话面试）&lt;/h2&gt;&lt;p&gt;自己也算比较幸运吧，第一天投递了简历内推，第二天下午就接到了电话。面试官人很好，很有耐心，会给予一些提示。差不多就问以下这些问题：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;js的数据类型&lt;/li&gt;
+&lt;li&gt;js的与运算和或运算的坑；（没答到）短路原理&lt;/li&gt;
+&lt;li&gt;js闭包的理解&lt;/li&gt;
+&lt;li&gt;js跨域的解决方案&lt;/li&gt;
+&lt;li&gt;ajax能否跨域（正确答案：是）；答错了&lt;/li&gt;
+&lt;li&gt;js模块化加载，AMD、CMD规范&lt;/li&gt;
+&lt;li&gt;js服务端遵循了什么规范；（没答上来）&lt;/li&gt;
+&lt;li&gt;平时用到了什么版本库；（我答的是JQuery）&lt;/li&gt;
+&lt;li&gt;事件委托；（当时没答上来）&lt;/li&gt;
+&lt;li&gt;promise&lt;/li&gt;
+&lt;li&gt;css3 弹性盒布局&lt;/li&gt;
+&lt;li&gt;前端性能优化（答得不全面）&lt;/li&gt;
+&lt;li&gt;less的优点&lt;/li&gt;
+&lt;li&gt;rect的了解&lt;/li&gt;
+&lt;li&gt;页面突然空白了，怎么解决这个bug（解决办法的思路）&lt;/li&gt;
+&lt;li&gt;怎么检测页面性能&lt;/li&gt;
+&lt;li&gt;平时怎么学习前端，最近看了什么新技术&lt;br&gt;(tips：第一天因为下午面试临近下班了，没有面完，就约了第二天同一时间再面试，经历了两天电话面试，中间电话信号一直不好，老是掉线，gg)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;二面（笔试-技术面试）&quot;&gt;&lt;a href=&quot;#二面（笔试-技术面试）&quot; class=&quot;headerlink&quot; title=&quot;二面（笔试+技术面试）&quot;&gt;&lt;/a&gt;二面（笔试+技术面试）&lt;/h2&gt;&lt;p&gt;二面大概是隔了一周后，接到hr电话邀我去公司面试。首先进行笔试，题量有点大，建议挑自己有把握的先做，然后二面面试官再根据我做的笔试题进行面试。  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前端性能优化的方案，说得越多越好；（不仅要知道，最好要是要知道里面的一些原理）&lt;/li&gt;
+&lt;li&gt;跨域的方案（最常用到的方案是什么）；&lt;/li&gt;
+&lt;li&gt;CORS（跨域资源共享）是什么；（接着第二个问题问的，移动端跨域用得比较多的方案）&lt;/li&gt;
+&lt;li&gt;具体例子问题：上传一个跨域资源的图片有几种方案（针对上一题）当时答得不好，毕竟没有这方面的经验，只记得面试官说了一个用form表单put方式提交服务端来处理。&lt;/li&gt;
+&lt;li&gt;http请求里面包含了哪些内容。其中服务端如何知道来自前端的cookie东西。（他想问的是http里面的哪个属性字段，太紧张了没懂面试官的意图）&lt;/li&gt;
+&lt;li&gt;H5form表单input新增了哪些新属性；&lt;/li&gt;
+&lt;li&gt;span元素如何设置其宽高。diplay：inline-block&lt;br&gt;面完下来，二面试官对我评价是基础很好，就是欠缺了点经验，然后就叫我等后续面试。。。（整个过程大概也就40几分钟，本来感觉面试得并不好，可是面试官还是给了我过。）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;三面（技术交叉面）&quot;&gt;&lt;a href=&quot;#三面（技术交叉面）&quot; class=&quot;headerlink&quot; title=&quot;三面（技术交叉面）&quot;&gt;&lt;/a&gt;三面（技术交叉面）&lt;/h2&gt;&lt;p&gt;这次面试分了两个人轮流来面试。&lt;br&gt;&lt;strong&gt;面A&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前端写过的最复杂的代码&lt;br&gt;一来就问如此开放有深度的问题，哪有时间想啊，于是宝宝又把上传图片在线预览的解决思路讲了一遍，（这个点，在前面两面里，我都有提到过，真是万金油的答案。哈哈）。&lt;/li&gt;
+&lt;li&gt;原生的ajax请求的过程；&lt;/li&gt;
+&lt;li&gt;ajax1的缺点有哪些（遗漏的地方）；&lt;/li&gt;
+&lt;li&gt;css布局可以分为哪几类&lt;/li&gt;
+&lt;li&gt;jquery的优点、特色；&lt;/li&gt;
+&lt;li&gt;gulp与grunt最大区别；&lt;/li&gt;
+&lt;li&gt;js动画与css动画的区别，怎样权衡使用；&lt;/li&gt;
+&lt;li&gt;js如何判定css3动画的结束&lt;br&gt;   一、用&lt;code&gt;setTimeout(function(){},time);&lt;/code&gt;来设定一个和动画一样的时间；&lt;br&gt;   二、利用&lt;code&gt;animationEnd&lt;/code&gt;事件来监听；（不同浏览器兼容性写法不同）&lt;/li&gt;
+&lt;li&gt;http的cookie有哪些属性，有什么安全问题？&lt;/li&gt;
+&lt;li&gt;304请求过程；&lt;/li&gt;
+&lt;li&gt;了解的es6新属性；&lt;/li&gt;
+&lt;li&gt;js的继承，写代码实现（我说了有call/apply和原型继承，call/apply写出来了，but原型继承没有写出来，555）  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;面B&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用js实现一个-10～10的随机数；&lt;/li&gt;
+&lt;li&gt;DOM原生方法innerHtml能否插入一段script标签的片段，并且执行其标签内部有相应的js脚本代码，如&lt;br&gt;&lt;code&gt;&amp;lt;script&amp;gt; alert(&amp;quot;1&amp;quot;);&amp;lt;/script&amp;gt;&lt;/code&gt;这样能否解析出来；若不能，如何能够解析出来？&lt;br&gt;答案显然是不能的，script标签内部是不能被正常解析的，解析到script时就会自动识别成关键字；&lt;br&gt;解决办法：当时想的是用substring将script片段给拆分出来，再解析执行，不过因为不肯定很是犹豫，宝宝该自信一点。&lt;/li&gt;
+&lt;li&gt;jsonp是什么？有什么安全上的漏洞（跨域资源不可信）。&lt;/li&gt;
+&lt;li&gt;web安全问题：跨站资源请求伪造，怎么解决方案。&lt;/li&gt;
+&lt;li&gt;事件委托的原理；&lt;/li&gt;
+&lt;li&gt;平时开发使用的工具有哪些（eclipse、sublime、webstorm），sublime里面喜欢装什么插件。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;四面（技术终面）&quot;&gt;&lt;a href=&quot;#四面（技术终面）&quot; class=&quot;headerlink&quot; title=&quot;四面（技术终面）&quot;&gt;&lt;/a&gt;四面（技术终面）&lt;/h2&gt;&lt;p&gt;又差不多过了一周左右，接到hr姐姐的通知来公司进行终面和hr面  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;为什么要做前端；&lt;/li&gt;
+&lt;li&gt;页面上如何让三个元素并行排列，如何确定他们的宽度；&lt;br&gt;我答的是用display：inline-block(浮动、绝对定位也可以的，下来回想应该多答几种)然后宽度是面试官提示采用bootstrap的栅栏布局来定位宽度，说白了，就是给不同元素宽度设置不同的百分比。&lt;/li&gt;
+&lt;li&gt;接着上一题，问了用过bootstrap没，是否对其内部的样式有修改过；&lt;/li&gt;
+&lt;li&gt;画出三次握手的示意图&lt;/li&gt;
+&lt;li&gt;http协议包含哪些内容&lt;/li&gt;
+&lt;li&gt;cookie的本质是什么？cookie里面有一个属性httponly是否了解？（懵逼了，当时不知道）&lt;/li&gt;
+&lt;li&gt;什么是js的闭包；在项目里面用到过么？  （我列举了for循环点击li标签事件的问题）&lt;/li&gt;
+&lt;li&gt;事件冒泡的机制；&lt;/li&gt;
+&lt;li&gt;平时写js的时候，遇到过哪些写得比较好的地方或者比较坑的地方；&lt;br&gt;好的地方当时没有头绪，坑爹的事情倒是一大堆。不过依然没有头绪，随机想到了ES6里面引入了块级作用域的概念，是ES5之前都没有的，就说了一下块级作用域的好处，和在哪个具体场景里面会用到，我有列举了刚才的for循环遍历点击事件例子。&lt;/li&gt;
+&lt;li&gt;js性能优化的地方有哪些；&lt;/li&gt;
+&lt;li&gt;快速排序的思路；&lt;/li&gt;
+&lt;li&gt;对reactjs的了解，然后其功能组件之间如何进行通讯（这个当时有看，但印象不深，记不清楚了，5555）&lt;/li&gt;
+&lt;li&gt;对于table按某列进行排序的思路；&lt;br&gt;（这个问题纠结了很久，之前有见过，但其算法思想忘记了。尴尬。最后凭借自己的思路，大致的说用数组去存储该列的元素值，然后对其进行排序，然后根据排序结果，来依次遍历，动态创建每行的片段，最后一次性添加到页面当中，他后来也没说，不知道说的对与错，好尴尬）&lt;/li&gt;
+&lt;li&gt;如果对table的某一列要进行移动一定距离，该怎么实现；  （凭感觉答，对那一列使用绝对定位，通过left、right属性来进行平移）&lt;/li&gt;
+&lt;li&gt;平时是如何学习前端新技术；&lt;/li&gt;
+&lt;li&gt;js有哪两大数据类型；&lt;br&gt;（当时的笔试题，看我卷子上面没写，又提了一遍）&lt;/li&gt;
+&lt;li&gt;对公司微店有什么了解吗？&lt;br&gt;基本就是这些问题了，不过有一个细节就是，面试官会根据你的简历和笔试题做的情况，随机提问，所以笔试题做过后，下来自己一定要把哪些没搞懂的搞懂、消化，说不定会再次问你相同的问题，避免掉在同一个水坑里。ps：面试官真的长得好像阿飞（大学同学），哈哈。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;五面（hr面）&quot;&gt;&lt;a href=&quot;#五面（hr面）&quot; class=&quot;headerlink&quot; title=&quot;五面（hr面）&quot;&gt;&lt;/a&gt;五面（hr面）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;题外话：本面是hr面，本来说的那天应该是先面二轮技术面，最后是hr面，但二轮面试官那天比较忙，在开会，所以先面了hr面。二面顺延至下周，也就是终面。gg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;为什么离开原来的公司；&lt;/li&gt;
+&lt;li&gt;平时是怎么学习前端的，是否从书上得到真正有用的东西。&lt;/li&gt;
+&lt;li&gt;如何理解“幸福”（结合在编程时的理解，醉了）&lt;/li&gt;
+&lt;li&gt;自己对未来的职业规划；&lt;/li&gt;
+&lt;li&gt;周围的人对自己的评价是什么；&lt;/li&gt;
+&lt;li&gt;自己有什么短板没有；&lt;br&gt;（小心：不能老实地交代自己身上的毛病，最好是采取迂回战术，结合自身优点里面谈一下缺点，不用过分突出自己的缺点）&lt;/li&gt;
+&lt;li&gt;平时的兴趣爱好（最好是能够突出团队协作的爱好，我说的羽毛球，嘿嘿）  大致就这些了，时间也就不到半个小时左右。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h1&gt;&lt;p&gt;整个面试流程下来，基本上是每周都要去微店公司进行一次面试，发现公司面的问题都着重于基础问题，所以基础（html、css、js）很重要。要注重项目开发时遇到的问题、难点，并做好笔记。最好是自己能够整理一些知识点，梳理整个知识体系，准备面试的时候，脑子里才会清晰地知道，自己掌握了哪些知识，哪些知识还需要补充。&lt;/p&gt;
+&lt;p&gt;**前端面试参考资源：&lt;a href=&quot;http://blog.csdn.net/zhaoxinglin123/article/details/47018433&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;请戳这里&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;  说起跟微店的爱恨情仇，真是渊源颇深，一路走来，真不知道踩了多少坑。（心塞。。。）从去年9月秋招开始，再到今年3月春招，我参与微店的面试总共4个回合。一回电话面试（2面），二回秋招笔试（直接被刷），三回转移阵地再战秋招（一轮笔试+一轮面试），四回春招（5面）。&lt;br&gt;  前面三回都失败了，好在第四回成功拿到offer。那就说说第四回之春招吧。尽管前面一次又一次的机会都被我浪费掉了，但可能我就像打不死的小强，看见微店春招招人，本来也没报以多大的希望，但有身边的她一直为我加油打气，于是我又厚着脸皮给微店投递了一份简历。。。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="面试" scheme="http://JTT5327.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="微店" scheme="http://JTT5327.github.io/tags/%E5%BE%AE%E5%BA%97/"/>
+    
+      <category term="前端" scheme="http://JTT5327.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="面试" scheme="http://JTT5327.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javascript</title>
+    <link href="http://JTT5327.github.io/2016/04/07/javascript/"/>
+    <id>http://JTT5327.github.io/2016/04/07/javascript/</id>
+    <published>2016-04-07T07:51:06.000Z</published>
+    <updated>2016-04-08T04:01:09.263Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;这是测试内容&quot;&gt;&lt;a href=&quot;#这是测试内容&quot; class=&quot;headerlink&quot; title=&quot;这是测试内容&quot;&gt;&lt;/a&gt;这是测试内容&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;这是测试内容&quot;&gt;&lt;a href=&quot;#这是测试内容&quot; class=&quot;headerlink&quot; title=&quot;这是测试内容&quot;&gt;&lt;/a&gt;这是测试内容&lt;/h2&gt;
     
     </summary>
     
